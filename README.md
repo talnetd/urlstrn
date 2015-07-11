@@ -1,8 +1,6 @@
 ~~## strn~~
 
-This will become a url shortener service implemented in Go lang and backed by redis.
-I wish I would have a lot of fun exploring go.
-
+This will become a url shortener service implemented in Go lang and backed by redis. I hope I would have a lot of fun exploring go.
 
 ### Stories
 1. create a shortened version of inputed url

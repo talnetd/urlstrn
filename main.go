@@ -1,7 +1,9 @@
 package main
 
 import (
+	"fmt"
 	"github.com/gorilla/mux"
+	"github.com/thanyawzinmin/urlstrn/strn/redis"
 	"log"
 	"net/http"
 	"time"
@@ -14,11 +16,21 @@ func main() {
 	// asign a handler function to root "/"
 	request.HandleFunc("/", RootHandler)
 
+	// dummy test for routing
 	http.Handle("/", request)
+
+	// to serve staic contents
+	// *css *js *html may be
+	assetServer := http.StripPrefix("/public/", http.FileServer(http.Dir("public")))
+	http.Handle("/public/", assetServer)
 
 	// Start listening on port :3000
 	log.Println("Listening...")
-	http.ListenAndServe(":3000", request)
+	err := http.ListenAndServe(":3000", nil)
+
+	if err != nil {
+		fmt.Println(err)
+	}
 }
 
 func RootHandler(w http.ResponseWriter, r *http.Request) {
@@ -28,4 +40,6 @@ func RootHandler(w http.ResponseWriter, r *http.Request) {
 
 	// write out the return
 	w.Write([]byte("The request sent at: " + tnow))
+
+	store.CreateStance()
 }
