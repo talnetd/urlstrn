@@ -7,6 +7,7 @@ import (
 	"html/template"
 	"log"
 	"net/http"
+	"os"
 )
 
 type HomeVariables struct {
@@ -30,20 +31,23 @@ func MakeHome(w http.ResponseWriter, r *http.Request) {
 
 func ShowStrn(w http.ResponseWriter, r *http.Request) {
 	type GetVariables struct {
-		Title    string
-		OrgLink  string
-		FullLink string
+		Title     string
+		OrgLink   string
+		FullLink  string
+		RedisPort string
 	}
 	vars := mux.Vars(r)
 	uid := vars["key"]
 
 	p := GetVariables{
-		Title:    "Have been Shortened",
-		FullLink: r.URL.Host + "/" + uid,
-		OrgLink:  store.GetUrl(uid),
+		Title:     "Have been Shortened",
+		FullLink:  r.Host + "/" + uid,
+		OrgLink:   store.GetUrl(uid),
+		RedisPort: os.Getenv("REDIS_PORT_6379_TCP_ADDR"),
 	}
 
 	log.Println(p)
+	log.Println(os.Getenv("REDIS_PORT_6379_TCP_ADDR"))
 
 	app.Templates = template.Must(template.ParseFiles("strn/templates/home/get.html", app.MainLayout))
 	app.Templates.ExecuteTemplate(w, "base", p)
