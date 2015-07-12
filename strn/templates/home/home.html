@@ -1,0 +1,29 @@
+{{define "body"}}
+
+    <div class="container">
+    
+        <div class="row">
+
+            <div class="page_wrapper">
+        
+                <header>
+                    
+                    <h1>Put your link inside the box</h1>
+                
+                </header>
+
+                <div class="form_wrapper">
+
+                    <form name="p_box" id="p_box" role="form" class="form-inline" action="/api/url" >
+                        <div class="form-group">
+                            <input name="url" type="text" id="url" class="form-control" placeholder="http://" />
+                        
+                        </div>
+                        <button type="submit" class="btn">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{{end}}
+

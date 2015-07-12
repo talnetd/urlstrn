@@ -3,10 +3,10 @@ package main
 import (
 	"fmt"
 	"github.com/gorilla/mux"
-	"github.com/thanyawzinmin/urlstrn/strn/redis"
+	"github.com/thanyawzinmin/urlstrn/strn/handlers/api"
+	"github.com/thanyawzinmin/urlstrn/strn/handlers/home"
 	"log"
 	"net/http"
-	"time"
 )
 
 func main() {
@@ -14,15 +14,24 @@ func main() {
 	request := mux.NewRouter()
 
 	// asign a handler function to root "/"
-	request.HandleFunc("/", RootHandler)
+	request.HandleFunc("/", home.MakeHome)
 
 	// dummy test for routing
 	http.Handle("/", request)
+
+	// end point for api
+	// * for all clients
+	// mobile* platform* web*
+	request.HandleFunc("/api/url", api.GetUrl)
 
 	// to serve staic contents
 	// *css *js *html may be
 	assetServer := http.StripPrefix("/public/", http.FileServer(http.Dir("public")))
 	http.Handle("/public/", assetServer)
+
+	// dependency management done by bower
+	bowerServer := http.StripPrefix("/bower_components/", http.FileServer(http.Dir("bower_components")))
+	http.Handle("/bower_components/", bowerServer)
 
 	// Start listening on port :3000
 	log.Println("Listening...")
@@ -31,15 +40,4 @@ func main() {
 	if err != nil {
 		fmt.Println(err)
 	}
-}
-
-func RootHandler(w http.ResponseWriter, r *http.Request) {
-	// get the current time Format used RFC1123
-	// >> http://www.csgnetwork.com/timerfc1123calc.html
-	tnow := time.Now().Format(time.RFC1123)
-
-	// write out the return
-	w.Write([]byte("The request sent at: " + tnow))
-
-	store.CreateStance()
 }

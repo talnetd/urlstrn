@@ -3,25 +3,23 @@ package store
 import (
 	"fmt"
 	"github.com/astaxie/goredis"
+	"github.com/thanyawzinmin/urlstrn/strn/config"
 )
 
-// redis instance addr
-const redis = "127.0.0.1:6379"
-
-func CreateStance() {
+func StoreDis() {
 
 	// create goredis instance
 	var redisClient goredis.Client
 
 	// set its address
-	redisClient.Addr = redis
+	redisClient.Addr = app.RedisAddr
 
 	// test set the string value
-	redisClient.Set("url", []byte("http://tinaunglinn.com"))
 	// find the value with key "url"
+	redisClient.Set("url", []byte("http://tinaunglinn.com"))
 	query, _ := redisClient.Get("url")
+
 	// print out the result for debug purpose
-	fmt.Println(string(query))
 	// delete the record back
-	redisClient.Del("a")
+	fmt.Println(string(query))
 }

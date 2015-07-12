@@ -1,1 +1,39 @@
-body { padding: 0px; margin: 0px; }
+body { padding: 0px; margin: 0px; min-height: 100vh; }
+
+.page_wrapper {    
+    padding-top: 20%;
+    margin: auto; 
+}
+
+.page_wrapper header h1 {
+    font-size: 1em;
+    max-width: 400px;
+    margin: auto;
+    font-family: 'Open Sans', sans-serif;
+    text-transform: uppercase;
+    text-align: left;
+}
+
+form#p_box { 
+    max-width: 400px;
+    margin: auto;
+    margin-top: 20px;
+}
+
+form#p_box .form-group { 
+    width: 60%;
+}
+form#p_box .form-group input[type="text"]{
+    font-family: 'Open Sans', sans-serif;
+    border-radius: 0px;
+    border: 1px solid rgb(250 , 220, 150);
+    width: 100%; 
+}
+
+button.btn {
+    border-radius: 0px;
+    background: rgb(250, 220, 150);
+    color: #333333;
+    font-style: bold;
+    font-family: 'Open Sans', sans-serif;
+ } 
