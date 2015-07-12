@@ -1,0 +1,27 @@
+{{define "body"}}
+    
+    <div class="container">    
+        
+        <div class="row">
+ 
+            <div class="page_wrapper">
+
+                <header>
+                    
+                    <h1>Your url have been lighten up</h1>
+
+   
+                </header>
+                
+                <p>
+                    From <a href="{{ .OrgLink }}">{{ .OrgLink }}</a> to <a href="{{ .FullLink }}">http://localhost:3000{{ .FullLink }}</a><br /> <br />
+    
+                    <a class="btn btn-default" href="/">Back Home</a> 
+                </p>
+                
+              
+            </div>
+        </div>
+
+    </div> 
+{{end}}

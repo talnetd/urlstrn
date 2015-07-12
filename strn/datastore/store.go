@@ -1,25 +1,27 @@
 package store
 
 import (
-	"fmt"
 	"github.com/astaxie/goredis"
 	"github.com/thanyawzinmin/urlstrn/strn/config"
 )
 
-func StoreDis() {
+// create goredis instance
+var redisClient goredis.Client
 
-	// create goredis instance
-	var redisClient goredis.Client
+func CreateDis(uid, url string) {
 
 	// set its address
 	redisClient.Addr = app.RedisAddr
 
 	// test set the string value
 	// find the value with key "url"
-	redisClient.Set("url", []byte("http://tinaunglinn.com"))
-	query, _ := redisClient.Get("url")
+	redisClient.Set(uid, []byte(url))
+	// redisClient.Del(uid)
+}
 
-	// print out the result for debug purpose
-	// delete the record back
-	fmt.Println(string(query))
+func GetUrl(uid string) string {
+
+	// find the url with the key "uid"
+	url, _ := redisClient.Get(uid)
+	return string(url)
 }

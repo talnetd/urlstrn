@@ -10,4 +10,10 @@ This will become a url shortener service implemented in Go lang and backed by re
 5. process and find the url
 6. if the url is found redirect the user
 
+### Concept
+* main is entry and attach requests to accessive handlers
+* handlers* control and manage data and also validate before passing to datastore
+* datastore* collect and analys the data and then store in the backend
+* datastore* can query the necessary data for handlers so that it can give it out to the user (platform)
+
 ( That's all for now to make it work )
