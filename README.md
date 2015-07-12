@@ -16,6 +16,17 @@ This will become a url shortener service implemented in Go lang and backed by re
 * datastore* collect and analys the data and then store in the backend
 * datastore* can query the necessary data for handlers so that it can give it out to the user (platform)
 
-### Deploy
+### Tools
+* Install Docker
+* Install Docker Composer ( docker-composer )
 
+### Deploy
+``` 
+$ docker-composer build 
+$ docker-composer up -d
+``` 
+### CI
+[![wercker status](https://app.wercker.com/status/ede547fd92b2c518624777321467ee74/m "wercker status")](https://app.wercker.com/project/bykey/ede547fd92b2c518624777321467ee74)
+
+( Thinking to deploy on gcloud ) /
 ( That's all for now to make it work )
