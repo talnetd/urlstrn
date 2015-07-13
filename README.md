@@ -20,11 +20,23 @@ This will become a url shortener service implemented in Go lang and backed by re
 * Install Docker
 * Install Docker Composer ( docker-composer )
 
-### Deploy
+### Test Run
 ``` 
 $ docker-composer build 
 $ docker-composer up -d
 ``` 
+
+### Deploy
+Currently I have deploye the service at Google Cloud Virtual Instances. So the setup would be different depending on the architect.
+
+
+
+### Todo
+* Frontend Validation / Backend Validation
+* User && Session Management
+* Service API
+* Test Suite
+
 ### CI
 [![wercker status](https://app.wercker.com/status/ede547fd92b2c518624777321467ee74/m "wercker status")](https://app.wercker.com/project/bykey/ede547fd92b2c518624777321467ee74)
 
