@@ -27,9 +27,10 @@ $ docker-composer up -d
 ``` 
 
 ### Deploy
-Currently I have deploye the service at Google Cloud Virtual Instances. So the setup would be different depending on the architect.
+Currently I have deployed the service at Google Cloud Virtual Instances. So the setup would be different depending on the architect.
 
-
+* App End Point [130.211.157.136:8080]
+* Running in the smallest f1-macro type vm
 
 ### Todo
 * Frontend Validation / Backend Validation
